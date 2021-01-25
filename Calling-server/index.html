@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>
+            Make a request
+        </title>
+    </head>
+    <body>
+        <p>
+            Click the button below to make a GET request to http://localhost:3000/
+        </p>
+        <button id="make-request">Request</button>
+        <div id="response"></div>
+    </body>
+
+    <script>
+
+        var button = document.getElementById('make-request')
+        var responseWrapper = document.getElementById('response')
+        button.onclick = () => {
+            fetch('http://localhost:3000/cors-status', { headers: { 'origin': 'localhost:3000' }}).then((res) => {
+                return res.text()
+            }).then(text => {
+                responseWrapper.innerHTML = text
+            }).catch(console.warn)
+        }
+
+    </script>
+</html>

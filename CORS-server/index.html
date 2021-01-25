@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>
+            Make a request
+        </title>
+    </head>
+    <body>
+        <p>
+            Click the button below to toggle CORS activaction
+        </p>
+        <button id="make-request">Toggle CORS</button>
+        <div id="response"></div>
+    </body>
+
+    <script>
+
+        var button = document.getElementById('make-request')
+        var responseWrapper = document.getElementById('response')
+        button.onclick = () => {
+            fetch('http://localhost:3000/enable-cors', { method: 'POST' }).then((res) => {
+                return res.text()
+            }).then(text => {
+                responseWrapper.innerHTML = text
+            })
+        }
+
+    </script>
+</html>
